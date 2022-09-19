@@ -1,0 +1,16 @@
+[
+    {"name":"CreateToDO","createdAt":"19/09/2022","category":"task","dates":"","isArchive":false},
+
+    {"name":"Go for a walk","createdAt":"18/09/2022","category":"randomThought","dates":"","isArchive":false},
+
+    {"name":"Meditate","createdAt":"17/09/2022","category":"idea","dates":"22.03.12","isArchive":false},
+
+    {"name":"Books","createdAt":"16/09/2022","category":"task","dates":"","isArchive":false},
+
+    {"name":"Sleep","createdAt":"15/09/2022","category":"task","dates":"","isArchive":true},
+
+    {"name":"GYM","createdAt":"14/09/2022","category":"task","dates":"","isArchive":false},
+    
+    {"name":"New Feature","createdAt":"13/09/2022","category":"task","dates":"","isArchive":false}
+    
+]

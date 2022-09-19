@@ -1,5 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #42c5f5;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: #292929;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.wrapper #active {
+  background-color: white;
+  border-radius: 20px;
+}
+.wrapper #active .top-part {
+  background-color: #292929;
+  padding-left: 20px;
+}
+.wrapper #active .top-part ul {
+  max-width: 1000px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: white;
+  padding: 10px 5px;
+}
+.wrapper #active .item {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
 }/*# sourceMappingURL=styles.css.map */

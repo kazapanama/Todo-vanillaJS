@@ -1,3 +1,5 @@
-import {a} from './module.js'
+import  {getData}  from "./module.js";
 
-console.log(a)
+getData()
+
+console.log('asd')
