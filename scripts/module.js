@@ -1,4 +1,4 @@
-import { formatMaxWidth } from "./utils.js"
+import { formatMaxWidth,formatCategory } from "./utils.js"
 
 export async function getData(){
    const response = await fetch('./mockData.json')
@@ -15,13 +15,13 @@ export function createTodo(item,node){
 
     todo.innerHTML = `
         <span class="active-name">${formatMaxWidth(name)}</span>
-        <span class="active-date">${createdAt}</span>
+        <span class="active-date-created">${createdAt}</span>
         <div class="active-div-formater">
-            <span>${category}</span>
+            <span>${formatCategory(category)}</span>
         </div>
         <span class="active-content">${formatMaxWidth(content)}</span>
         <div class="active-div-formater">
-        <span>${dates}</span>
+        <span class="active-date-found">${dates}</span>
 
             
         </div>

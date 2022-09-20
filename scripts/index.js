@@ -1,4 +1,5 @@
 import  {getData,createTodo,showForm,hideForm}  from "./module.js";
+import { getDate } from "./utils.js";
 
 const addForm = document.querySelector('form')
 const activeSection = document.querySelector('.items')
@@ -35,8 +36,8 @@ addForm.addEventListener('submit',(e)=>{
 
     formProps.isArchive = false;
     formProps.id = Math.floor(Math.random()*10000)
-    let date = new Date
-    formProps.createdAt = date.toLocaleDateString()
+    
+    formProps.createdAt = getDate()
     formProps.dates = ''
 
     createTodo(formProps,activeSection)
