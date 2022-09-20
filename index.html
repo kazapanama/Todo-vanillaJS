@@ -8,10 +8,54 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1>Todo app</h1>
-
-
-    <script src="./scripts/index.js" type="module" ></script>
     
+    <div class="form-bg" style="display:none">
+        <form>
+            <h2>adding new Todo</h2>
+            <div class="form-question">
+                <label for="name">Name:</label>
+                <input type="text" name="name">
+            </div>  
+            <div class="form-question">
+                <label for="content">Content:</label>
+                <input type="text" name="content">
+            </div>
+
+            <div class="form-question">
+                <label>Category:</label>
+                <select name="category" id="category">
+                    <option value="idea">Idea</option>
+                    <option value="randomThought">Random Thought</option>
+                    <option value="task">Task</option>
+                    <button type="submit">Add</button>
+                </select>
+            </div>
+            <button type="submit">add new todo</button>
+        </form>
+    </div>
+
+    <main class="wrapper">
+        
+        <section id="active">
+            <div class="top-part">
+                <ul>
+                    <li>Name</li>
+                    <li>Created</li>
+                    <li>Category</li>
+                    <li>Content</li>
+                    <li>Dates</li>
+                <ul>
+            </div>
+            <div class="items"></div>
+        </section>
+        <button id="btn-add">Add new Todo</button>
+
+        <section id="archive">
+
+        </section>
+    </main>
+
+
+    <script defer src="./scripts/index.js" type="module" ></script>
 </body>
 </html>
