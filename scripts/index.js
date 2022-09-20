@@ -1,9 +1,8 @@
-import  {getData,createTodo,showForm,hideForm}  from "./module.js";
-import { getDate } from "./utils.js";
+import  {getData,createTodo,showForm,hideForm,renderSummary}  from "./module.js";
+import { getDate,formatCategory } from "./utils.js";
 
 const addForm = document.querySelector('form')
 const activeSection = document.querySelector('.items')
-
 const addBtn = document.querySelector('#btn-add')
 
 
@@ -20,11 +19,6 @@ let archiveTodos = allTodos.filter(item=>item.isArchive === true)
 //initial render of all to-dos
 activeTodos.forEach(item=>createTodo(item,activeSection))
         
-    
-
-    
-
-
 addBtn.addEventListener('click',()=>showForm(addForm))
 
 //adding new to-do
@@ -41,8 +35,18 @@ addForm.addEventListener('submit',(e)=>{
     formProps.dates = ''
 
     createTodo(formProps,activeSection)
+    allTodos = [...allTodos,formProps]
+    renderSummary(allTodos,summarySection)
+    
     hideForm(addForm)
+    addForm.reset()
+    
 })
+
+
+//rendering  summary section
+const summarySection = document.querySelector('.summary-render')
+renderSummary(allTodos,summarySection)
 
 
 

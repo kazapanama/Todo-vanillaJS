@@ -1,16 +1,16 @@
 [
-    {"id":1, "name":"CreateToDOs","createdAt":"19.09.2022","category":"task","dates":"","isArchive":false, "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
+    {"id":1, "name":"CreateToDOs","createdAt":"13.09.2022","category":"task","dates":"","isArchive":false, "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
 
-    {"id":2, "name":"Go for a walk on a really good,sunny day","createdAt":"18.09.2022","category":"randomThought","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
+    {"id":2, "name":"Go for a walk on a really good,sunny day","createdAt":"14.09.2022","category":"randomThought","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
 
-    {"id":3, "name":"Remember how i meditated on 22.03.12","createdAt":"17.09.2022","category":"idea","dates":"22.03.12","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
+    {"id":3, "name":"Remember how i meditated on 22.03.12","createdAt":"15.09.2022","category":"idea","dates":"22.03.12","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
 
     {"id":4, "name":"Books","createdAt":"16.09.2022","category":"task","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
 
-    {"id":5, "name":"Sleep","createdAt":"15.09.2022","category":"task","dates":"","isArchive":true , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
+    {"id":5, "name":"Sleep","createdAt":"17.09.2022","category":"task","dates":"","isArchive":true , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
 
-    {"id":6, "name":"GYM","createdAt":"14.09.2022","category":"task","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
+    {"id":6, "name":"GYM","createdAt":"18.09.2022","category":"task","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"},
     
-    {"id":7, "name":"New Feature","createdAt":"13.09.2022","category":"task","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"}
+    {"id":7, "name":"New Feature","createdAt":"19.09.2022","category":"task","dates":"","isArchive":false , "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"}
     
 ]

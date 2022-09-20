@@ -16,7 +16,7 @@ body {
 .form-bg {
   position: absolute;
   width: 100%;
-  min-height: 100%;
+  height: 120%;
   top: 0;
   left: 0;
   background-color: rgba(29, 29, 29, 0.7);
@@ -129,6 +129,7 @@ body {
   border: 1px solid #292929;
   border-radius: 50%;
   padding: 3px;
+  transition-duration: 0.2s;
 }
 .wrapper #active .items .item .active-icons .active-icon:hover {
   background-color: #fff;
@@ -145,8 +146,45 @@ body {
   cursor: pointer;
   border-radius: 2px;
   transition-duration: 0.3s;
+  margin-bottom: 25px;
 }
 .wrapper #btn-add:hover {
   background-color: #fff;
   color: #42c5f5;
+}
+.wrapper #summary {
+  background-color: #fff;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+.wrapper #summary .summary-top-part {
+  background-color: #292929;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 400px;
+  padding: 10px 20px;
+}
+.wrapper #summary .summary-top-part div {
+  display: flex;
+  gap: 50px;
+}
+.wrapper #summary .sumary-item {
+  color: #292929;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  padding-right: 40px;
+  gap: 400px;
+  border-bottom: 1px solid #292929;
+}
+.wrapper #summary .sumary-item div {
+  display: flex;
+  gap: 120px;
+}
+.wrapper #summary .sumary-item span {
+  font-size: 20px;
 }/*# sourceMappingURL=styles.css.map */
