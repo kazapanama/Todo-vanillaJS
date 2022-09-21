@@ -1,25 +1,32 @@
-import  {getData,createTodo,showForm,hideForm,renderSummary}  from "./module.js";
+import  {getData,createTodo,showForm,hideForm,renderSummary,renderArchive,renderActive,filterData}  from "./module.js";
 import { getDate,formatCategory } from "./utils.js";
 
-const addForm = document.querySelector('form')
-const activeSection = document.querySelector('.items')
-const addBtn = document.querySelector('#btn-add')
-
-
-
-
-
+const activeSection = document.querySelector('.active-render')
 
 
 
 let allTodos = await getData()
-let activeTodos = allTodos.filter(item=>item.isArchive === false)
-let archiveTodos = allTodos.filter(item=>item.isArchive === true)
 
-//initial render of all to-dos
-activeTodos.forEach(item=>createTodo(item,activeSection))
-        
+let [activeTodos,archiveTodos] = filterData(allTodos)
+
+//rendering active section
+renderActive(activeTodos,activeSection)     
+
+//getting form fror adding items
+const addForm = document.querySelector('form')
+const addBtn = document.querySelector('#btn-add')
 addBtn.addEventListener('click',()=>showForm(addForm))
+
+
+//rendering  summary section
+const summarySection = document.querySelector('.summary-render')
+renderSummary(allTodos,summarySection)
+
+//rendering archive section
+const archiveSection = document.querySelector('.archive-render')
+renderArchive(archiveTodos,archiveSection)
+
+
 
 //adding new to-do
 addForm.addEventListener('submit',(e)=>{
@@ -34,7 +41,7 @@ addForm.addEventListener('submit',(e)=>{
     formProps.createdAt = getDate()
     formProps.dates = ''
 
-    createTodo(formProps,activeSection)
+    createTodo(formProps,activeSection,'active')
     allTodos = [...allTodos,formProps]
     renderSummary(allTodos,summarySection)
     
@@ -42,13 +49,6 @@ addForm.addEventListener('submit',(e)=>{
     addForm.reset()
     
 })
-
-
-//rendering  summary section
-const summarySection = document.querySelector('.summary-render')
-renderSummary(allTodos,summarySection)
-
-
 
 
 
