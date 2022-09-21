@@ -1,16 +1,12 @@
-import  {getData,createTodo,showForm,hideForm,renderSummary,renderArchive,renderActive,filterData}  from "./module.js";
+import  {getData,createTodo,showForm,hideForm,renderSummary,renderArchive,renderActive}  from "./module.js";
 import { getDate,formatCategory } from "./utils.js";
-
-
-
 
 let allTodos = await getData()
 
-let [activeTodos,archiveTodos] = filterData(allTodos)
 
 //rendering active section
 const activeSection = document.querySelector('.active-render')
-renderActive(activeTodos,activeSection)     
+renderActive(allTodos,activeSection)     
 
 //rendering  summary section
 const summarySection = document.querySelector('.summary-render')
@@ -18,10 +14,10 @@ renderSummary(allTodos,summarySection)
 
 //rendering archive section
 const archiveSection = document.querySelector('.archive-render')
-renderArchive(archiveTodos,archiveSection)
+renderArchive(allTodos,archiveSection)
 
 //getting form for adding items
-const addForm = document.querySelector('form')
+const addForm = document.querySelector('#add-item')
 const addBtn = document.querySelector('#btn-add')
 addBtn.addEventListener('click',()=>showForm(addForm))
 
@@ -36,6 +32,7 @@ addForm.addEventListener('submit',(e)=>{
     formProps.id = Math.floor(Math.random()*10000)
     
     formProps.createdAt = getDate()
+    //NEED REGEX FUNCTION
     formProps.dates = ''
 
     createTodo(formProps,activeSection,'active')
@@ -47,9 +44,6 @@ addForm.addEventListener('submit',(e)=>{
     
 })
 
-
-
-
 // setting up dynamic listeners for item buttons
 document.addEventListener('click',function(e){
     
@@ -60,7 +54,7 @@ document.addEventListener('click',function(e){
         allTodos = allTodos.filter(item=>item !== todo)
         
         e.target.parentNode.parentNode.remove()
-        
+        renderSummary(allTodos,summarySection)
            
      }
 
@@ -75,8 +69,44 @@ document.addEventListener('click',function(e){
         } else {
             createTodo(todo,activeSection,'active')
         }
-        
+        renderSummary(allTodos,summarySection)
      }
 
-     renderSummary(allTodos,summarySection)
+
+     if(e.target && e.target.dataset.action === 'edit'){
+        
+        const todo = allTodos.find(task=>task.id === +e.target.dataset.id)
+        const editForm = document.querySelector('#edit-item')
+
+        editForm.name.value = todo.name
+        editForm.content.value = todo.content
+        editForm.childNodes[7].lastElementChild.value = todo.category
+        
+        showForm(editForm)
+        
+        editForm.addEventListener('submit',function handler(e){
+            e.preventDefault()
+            const formData = new FormData(e.target);
+            const formProps = Object.fromEntries(formData);
+            
+            console.log(formProps)
+            //updating all todos
+            todo.name = formProps.name
+            todo.content = formProps.content
+            todo.category = formProps.category
+         
+
+            if (todo.isArchive === true){
+                renderArchive(allTodos,archiveSection)
+            } else {
+                renderActive(allTodos,activeSection)  
+            }
+           editForm.removeEventListener('submit',handler)
+           renderSummary(allTodos,summarySection)
+            hideForm(editForm)
+            
+        })
+        
+     }
+     
  });
