@@ -38,17 +38,17 @@ export function createTodo(item,node,type='active'){
     `
     if (type === 'active'){
         todo.lastElementChild.innerHTML = `
-        <img class="active-icon" data-action="edit" src="./img/edit.svg">
-        <img class="active-icon" data-action="archive" src="./img/archive.svg">
-        <img class="active-icon" data-action="delete" src="./img/delete.svg">
+        <img class="active-icon" data-action="edit" data-id="${item.id}" src="./img/edit.svg">
+        <img class="active-icon" data-action="archive" data-id="${item.id}" src="./img/archive.svg">
+        <img class="active-icon" data-action="delete" data-id="${item.id}" src="./img/delete.svg">
         `
 
     }
 
     if (type === 'archive'){
         todo.lastElementChild.innerHTML = `
-        <img class="active-icon" data-action="edit" src="./img/edit.svg">
-        <img class="active-icon" data-action="delete" src="./img/delete.svg">
+        <img class="active-icon" data-action="archive" data-id="${item.id}" src="./img/archive.svg">
+        <img class="active-icon" data-action="delete" data-id="${item.id}" src="./img/delete.svg">
         `
     }
 
@@ -61,27 +61,27 @@ export function createTodo(item,node,type='active'){
     let icons = Array.from(todo.lastElementChild.children)
     
 //ADDING LISTENERS FOR BUTTONS
-    icons.forEach(item=>{
+    // icons.forEach(item=>{
         
-        if (item.dataset.action ==='delete'){
-            item.addEventListener('click',()=>{
-                todo.remove() 
-                })
-        }
+    //     if (item.dataset.action ==='delete'){
+    //         item.addEventListener('click',()=>{
+    //             todo.remove() 
+    //             })
+    //     }
 
-        if (item.dataset.action ==='edit'){
-            // item.addEventListener('click',()=>todo.remove())
-        }
+    //     if (item.dataset.action ==='edit'){
+    //         // item.addEventListener('click',()=>todo.remove())
+    //     }
 
-        if (item.dataset.action ==='archive'){
-            // item.addEventListener('click',()=>todo.remove())
-        }
+    //     if (item.dataset.action ==='archive'){
+    //         // item.addEventListener('click',()=>todo.remove())
+    //     }
         
         
         
-        item.addEventListener('click',()=>console.log(todo.id+' - '+item.dataset.action)) 
+    //     item.addEventListener('click',()=>console.log(todo.id+' - '+item.dataset.action)) 
         
-     })
+    //  })
     
     node.appendChild(todo)
 }

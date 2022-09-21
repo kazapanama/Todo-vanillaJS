@@ -1,7 +1,6 @@
 import  {getData,createTodo,showForm,hideForm,renderSummary,renderArchive,renderActive,filterData}  from "./module.js";
 import { getDate,formatCategory } from "./utils.js";
 
-const activeSection = document.querySelector('.active-render')
 
 
 
@@ -10,13 +9,8 @@ let allTodos = await getData()
 let [activeTodos,archiveTodos] = filterData(allTodos)
 
 //rendering active section
+const activeSection = document.querySelector('.active-render')
 renderActive(activeTodos,activeSection)     
-
-//getting form fror adding items
-const addForm = document.querySelector('form')
-const addBtn = document.querySelector('#btn-add')
-addBtn.addEventListener('click',()=>showForm(addForm))
-
 
 //rendering  summary section
 const summarySection = document.querySelector('.summary-render')
@@ -26,7 +20,10 @@ renderSummary(allTodos,summarySection)
 const archiveSection = document.querySelector('.archive-render')
 renderArchive(archiveTodos,archiveSection)
 
-
+//getting form for adding items
+const addForm = document.querySelector('form')
+const addBtn = document.querySelector('#btn-add')
+addBtn.addEventListener('click',()=>showForm(addForm))
 
 //adding new to-do
 addForm.addEventListener('submit',(e)=>{
@@ -53,3 +50,33 @@ addForm.addEventListener('submit',(e)=>{
 
 
 
+// setting up dynamic listeners for item buttons
+document.addEventListener('click',function(e){
+    
+    if(e.target && e.target.dataset.action== 'delete'){
+        
+        const todo = allTodos.find(task=>task.id === +e.target.dataset.id)
+            
+        allTodos = allTodos.filter(item=>item !== todo)
+        
+        e.target.parentNode.parentNode.remove()
+        
+           
+     }
+
+     if(e.target && e.target.dataset.action === 'archive'){
+       
+        const todo = allTodos.find(task=>task.id === +e.target.dataset.id)
+        todo.isArchive = !todo.isArchive;
+
+        e.target.parentNode.parentNode.remove()
+        if (todo.isArchive === true){
+            createTodo(todo,archiveSection,'archive')
+        } else {
+            createTodo(todo,activeSection,'active')
+        }
+        
+     }
+
+     renderSummary(allTodos,summarySection)
+ });
