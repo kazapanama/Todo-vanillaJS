@@ -9,8 +9,9 @@
 </head>
 <body>
     
-    <div class="form-bg" style="display:none">
-        <form>
+    <div id="form-bg" style="display:none">
+        
+        <form id="add-item">
             <h2>Add new Todo</h2>
             <div class="form-question">
                 <label for="name">Name:</label>
@@ -31,6 +32,29 @@
                 </select>
             </div>
             <button type="submit">add new todo</button>
+        </form>
+
+        <form id="edit-item">
+            <h2>Edit task</h2>
+            <div class="form-question">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+            </div>  
+            <div class="form-question">
+                <label for="content">Content:</label>
+                <input type="text" name="content">
+            </div>
+
+            <div class="form-question">
+                <label>Category:</label>
+                <select name="category" id="category">
+                    <option value="task">Task</option>
+                    <option value="randomThought">Random Thought</option>
+                    <option value="idea">Idea</option>
+                    <button type="submit">Add</button>
+                </select>
+            </div>
+            <button type="submit">save changes</button>
         </form>
     </div>
 

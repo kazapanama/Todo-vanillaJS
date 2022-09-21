@@ -8,11 +8,7 @@ export async function getData(){
    return data
 }
         
-export function filterData(data){
-    const activeTodos = data.filter(item=>item.isArchive === false)
-    const archiveTodos = data.filter(item=>item.isArchive === true)
-    return [activeTodos,archiveTodos]
-}
+
 
 export function createTodo(item,node,type='active'){
     const todo = document.createElement('div')
@@ -47,41 +43,15 @@ export function createTodo(item,node,type='active'){
 
     if (type === 'archive'){
         todo.lastElementChild.innerHTML = `
-        <img class="active-icon" data-action="archive" data-id="${item.id}" src="./img/archive.svg">
+        <img class="active-icon" data-action="edit" data-id="${item.id}" src="./img/edit.svg">
+        <img class="active-icon" data-action="archive" data-id="${item.id}" src="./img/restore.svg">
         <img class="active-icon" data-action="delete" data-id="${item.id}" src="./img/delete.svg">
         `
     }
 
 
-    todo.id = id
-
 
     
-
-    let icons = Array.from(todo.lastElementChild.children)
-    
-//ADDING LISTENERS FOR BUTTONS
-    // icons.forEach(item=>{
-        
-    //     if (item.dataset.action ==='delete'){
-    //         item.addEventListener('click',()=>{
-    //             todo.remove() 
-    //             })
-    //     }
-
-    //     if (item.dataset.action ==='edit'){
-    //         // item.addEventListener('click',()=>todo.remove())
-    //     }
-
-    //     if (item.dataset.action ==='archive'){
-    //         // item.addEventListener('click',()=>todo.remove())
-    //     }
-        
-        
-        
-    //     item.addEventListener('click',()=>console.log(todo.id+' - '+item.dataset.action)) 
-        
-    //  })
     
     node.appendChild(todo)
 }
@@ -90,7 +60,9 @@ export function createTodo(item,node,type='active'){
 
 
 //ACTIVE SECTION FUNCTIONS
-export function renderActive(todos,node){
+export function renderActive(allTodos,node){
+    const todos = allTodos.filter(item=>item.isArchive === false)
+    node.innerHTML = ''
     todos.forEach(item=>createTodo(item,node,'active'))
 }
 
@@ -98,6 +70,7 @@ export function renderActive(todos,node){
 
 //FORM FUNCTIONS
 export function showForm(node){
+    node.style.display = 'flex'
     node.parentNode.style.display = 'flex'
     document.body.style.overflow = 'hidden'
     
@@ -109,6 +82,7 @@ export function showForm(node){
 }
 
 export function hideForm(node){
+    node.style.display = 'none'
     node.parentNode.style.display = 'none'
     document.body.style.overflow = ''
 }
@@ -170,7 +144,10 @@ export function renderSummary(allTodos,node){
 
 
 //ARCHIVE SECTION FUNCTIONS
-export function renderArchive(archiveTodos,node){
+export function renderArchive(allTodos,node){
+
+    const archiveTodos = allTodos.filter(item=>item.isArchive === true)
+    node.innerHTML = ''
     archiveTodos.forEach(item=>{
         createTodo(item,node,'archive')
 
