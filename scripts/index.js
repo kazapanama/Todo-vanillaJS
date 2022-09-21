@@ -1,5 +1,5 @@
 import  {getData,createTodo,showForm,hideForm,renderSummary,renderArchive,renderActive}  from "./module.js";
-import { getDate,formatCategory } from "./utils.js";
+import { getDate,parseDates } from "./utils.js";
 
 let allTodos = await getData()
 
@@ -32,8 +32,11 @@ addForm.addEventListener('submit',(e)=>{
     formProps.id = Math.floor(Math.random()*10000)
     
     formProps.createdAt = getDate()
-    //NEED REGEX FUNCTION
-    formProps.dates = ''
+    
+    
+
+    
+    formProps.dates = parseDates(formProps.content)
 
     createTodo(formProps,activeSection,'active')
     allTodos = [...allTodos,formProps]
@@ -93,6 +96,7 @@ document.addEventListener('click',function(e){
             //updating all todos
             todo.name = formProps.name
             todo.content = formProps.content
+            todo.dates = parseDates(formProps.content)
             todo.category = formProps.category
          
 

@@ -1,6 +1,5 @@
 import { formatMaxWidth,formatCategory } from "./utils.js"
 
-
 //GENERAL FUNCTIONS SECTION
 export async function getData(){
    const response = await fetch('./mockData.json')
@@ -8,8 +7,6 @@ export async function getData(){
    return data
 }
         
-
-
 export function createTodo(item,node,type='active'){
     const todo = document.createElement('div')
     todo.classList.add('item')
@@ -57,15 +54,12 @@ export function createTodo(item,node,type='active'){
 }
 
 
-
-
 //ACTIVE SECTION FUNCTIONS
 export function renderActive(allTodos,node){
     const todos = allTodos.filter(item=>item.isArchive === false)
     node.innerHTML = ''
     todos.forEach(item=>createTodo(item,node,'active'))
 }
-
 
 
 //FORM FUNCTIONS

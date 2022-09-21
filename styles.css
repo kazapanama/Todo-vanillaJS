@@ -145,6 +145,7 @@ body {
   border-radius: 20px;
   padding-bottom: 20px;
   background-color: rgb(187, 187, 187);
+  margin-bottom: 20px;
 }
 .wrapper #archive .top-part {
   background-color: #292929;
@@ -177,6 +178,7 @@ body {
   width: 130px;
   font-weight: 700;
   font-size: 18px;
+  overflow-wrap: break-word;
 }
 .wrapper .item .date-created {
   text-align: center;
@@ -184,7 +186,8 @@ body {
 }
 .wrapper .item .active-content {
   margin-left: 40px;
-  min-width: 250px;
+  width: 250px;
+  overflow-wrap: break-word;
 }
 .wrapper .item .formater {
   width: 80px;

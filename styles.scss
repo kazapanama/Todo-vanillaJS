@@ -176,6 +176,7 @@ body{
         border-radius: 20px;
         padding-bottom: 20px;
         background-color:$grey;
+        margin-bottom: 20px;
         .top-part{
             background-color: $black;
             padding-left: 20px;
@@ -211,6 +212,7 @@ body{
             width:130px;
             font-weight: 700;
             font-size: 18px;
+            overflow-wrap: break-word;
         }
         
         .date-created{
@@ -220,7 +222,9 @@ body{
 
         .active-content{
             margin-left: 40px;
-            min-width: 250px;
+            width: 250px;
+            overflow-wrap: break-word;
+           
         }
 
         .formater{
