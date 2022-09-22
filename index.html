@@ -9,28 +9,52 @@
 </head>
 <body>
     
-    <div class="form-bg" style="display:none">
-        <form>
-            <h2>adding new Todo</h2>
+    <div id="form-bg" style="display:none">
+        
+        <form id="add-item">
+            <h2>Add new Todo</h2>
             <div class="form-question">
                 <label for="name">Name:</label>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </div>  
             <div class="form-question">
                 <label for="content">Content:</label>
-                <input type="text" name="content">
+                <textarea  name="content"></textarea>
             </div>
 
             <div class="form-question">
                 <label>Category:</label>
                 <select name="category" id="category">
-                    <option value="idea">Idea</option>
-                    <option value="randomThought">Random Thought</option>
                     <option value="task">Task</option>
+                    <option value="randomThought">Random Thought</option>
+                    <option value="idea">Idea</option>
                     <button type="submit">Add</button>
                 </select>
             </div>
             <button type="submit">add new todo</button>
+        </form>
+
+        <form id="edit-item">
+            <h2>Edit task</h2>
+            <div class="form-question">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+            </div>  
+            <div class="form-question">
+                <label for="content">Content:</label>
+                <textarea  name="content"></textarea>
+            </div>
+
+            <div class="form-question">
+                <label>Category:</label>
+                <select name="category" id="category">
+                    <option value="task">Task</option>
+                    <option value="randomThought">Random Thought</option>
+                    <option value="idea">Idea</option>
+                    <button type="submit">Add</button>
+                </select>
+            </div>
+            <button type="submit">save changes</button>
         </form>
     </div>
 
@@ -46,12 +70,37 @@
                     <li>Dates</li>
                 <ul>
             </div>
-            <div class="items"></div>
+            <div class="active-render"></div>
         </section>
         <button id="btn-add">Add new Todo</button>
 
-        <section id="archive">
+    
+        <section id="summary">
+            <div class="summary-top-part">
+                <span>list of categories</span>
+                <div>
+                    <span>Active</span>
+                    <span>Archive</span>
+                </div>
+                
 
+            </div>
+            <div class="summary-render"></div>
+        </section>
+
+        <section id="archive">
+            <div class="top-part">
+                <ul>
+                    <li>Name</li>
+                    <li>Created</li>
+                    <li>Category</li>
+                    <li>Content</li>
+                    <li>Dates</li>
+                <ul>
+            </div>
+            <div class="archive-render">
+
+            </div>
         </section>
     </main>
 
