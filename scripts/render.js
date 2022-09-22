@@ -1,4 +1,4 @@
-import { formatMaxWidth,formatCategory } from "./utils.js"
+import { formatMaxWidth,formatCategory, parseDates} from "./utils.js"
 
 //GENERAL FUNCTIONS SECTION
 export async function getData(){
@@ -11,7 +11,7 @@ export function createTodo(item,node,type='active'){
     const todo = document.createElement('div')
     todo.classList.add('item')
 
-    let {name, createdAt, category,dates,isArchive,id,content} = item
+    let {name, createdAt, category,dates,id,content} = item
 
     todo.innerHTML = `
         <span class="name">${formatMaxWidth(name)}</span>
@@ -21,35 +21,26 @@ export function createTodo(item,node,type='active'){
         </div>
         <span class="active-content">${formatMaxWidth(content)}</span>
         <div class="formater">
-        <span class="date-found">${dates}</span>
-
-            
+            <span class="date-found">${parseDates(dates)}</span>
         </div>
         <div class="icons">
-            
         </div>
     `
     if (type === 'active'){
         todo.lastElementChild.innerHTML = `
-        <img class="active-icon" data-action="edit" data-id="${item.id}" src="./img/edit.svg">
-        <img class="active-icon" data-action="archive" data-id="${item.id}" src="./img/archive.svg">
-        <img class="active-icon" data-action="delete" data-id="${item.id}" src="./img/delete.svg">
+        <img class="active-icon" data-action="edit" data-id="${id}" src="./img/edit.svg">
+        <img class="active-icon" data-action="archive" data-id="${id}" src="./img/archive.svg">
+        <img class="active-icon" data-action="delete" data-id="${id}" src="./img/delete.svg">
         `
-
     }
 
     if (type === 'archive'){
         todo.lastElementChild.innerHTML = `
-        <img class="active-icon" data-action="edit" data-id="${item.id}" src="./img/edit.svg">
-        <img class="active-icon" data-action="archive" data-id="${item.id}" src="./img/restore.svg">
-        <img class="active-icon" data-action="delete" data-id="${item.id}" src="./img/delete.svg">
+        <img class="active-icon" data-action="edit" data-id="${id}" src="./img/edit.svg">
+        <img class="active-icon" data-action="archive" data-id="${id}" src="./img/restore.svg">
+        <img class="active-icon" data-action="delete" data-id="${id}" src="./img/delete.svg">
         `
     }
-
-
-
-    
-    
     node.appendChild(todo)
 }
 
@@ -102,11 +93,7 @@ export function getSummaryIfno(allTodos){
     //filling mock with data
     allTodos.forEach(item=>{
         categoriesTree[item.category][!item.isArchive ? 'active' : 'archive'] +=1 
-        
       })
-      
-      
-      
       return categoriesTree
     }
 
@@ -118,12 +105,11 @@ export function renderSummaryItems(summaryCategories,node){
         div.innerHTML = `
         <div class="sumary-item">
             <span>${formatCategory(key)}</span>
-        
+    
             <div>
                 <span>${summaryCategories[key]['active']}</span>
                 <span>${summaryCategories[key]['archive']}</span>
             </div>
-            
         </div>
         `
         node.appendChild(div)
@@ -139,11 +125,9 @@ export function renderSummary(allTodos,node){
 
 //ARCHIVE SECTION FUNCTIONS
 export function renderArchive(allTodos,node){
-
     const archiveTodos = allTodos.filter(item=>item.isArchive === true)
     node.innerHTML = ''
     archiveTodos.forEach(item=>{
         createTodo(item,node,'archive')
-
     })
 }
